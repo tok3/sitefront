@@ -1,0 +1,85 @@
+<!doctype html>
+
+<!--[if lt IE 7]> <html class="no-js ie6 oldie" lang="en"> <![endif]-->
+<!--[if IE 7]>    <html class="no-js ie7 oldie" lang="en"> <![endif]-->
+<!--[if IE 8]>    <html class="no-js ie8 oldie" lang="en"> <![endif]-->
+<!--[if gt IE 8]> <html class="no-js" lang="en"> 		   <![endif]-->
+
+<head>
+  
+
+  {{ theme:partial name="metadata" }}
+
+  <!-- Set a base location for assets -->
+  <base href="{{ url:base }}"/>
+  <!-- End base -->
+
+  <!-- CSS. No need to specify the media attribute unless specifically targeting a media type, leaving blank implies media=all -->
+  {{ asset:css file="foundation-icons.css" group="sitestyles"}}
+  
+  {{ if !{ mobiledetect:isMobile } }}
+  {{ asset:css file="/slider/default.css" group="sitestyles"}}
+  {{ asset:css file="/slider/common.css" group="sitestyles"}}
+  {{endif}}
+  
+
+  {{ asset:css file="app.css" group="sitestyles"}}
+  {{asset:render group="sitestyles" }}
+  
+  <!-- End CSS-->
+
+  <!-- Google Font Lib -->
+
+  <!-- Load up some favicons -->
+  {{ theme:favicon file="favicon.png"}}
+
+  <!-- All JavaScript at the bottom, except for Modernizr. -->
+  {{ asset:js file="bower_components/modernizr/modernizr.js" group="mdr"}}
+  {{asset:render group="mdr" }}
+
+  
+  <!-- Google Analytics -->
+  {{ integration:analytics }}
+
+  {{if page.layout.slug == "paralax"}}
+	<style type="text/css">
+	  {{ streams:cycle stream="paralax"}}
+	  .bg-{{id}} {
+	  background: url('{{bg_image:image}}') no-repeat center center fixed; 
+	  -webkit-background-size: cover;
+	  -moz-background-size: cover;
+	  -o-background-size: cover;
+	  background-size: cover;
+	  }
+	  {{ /streams:cycle }}
+
+	</style>
+	{{endif}}
+	
+
+  </head>
+
+  <body class=" {{ url:segments segment="1" default="home" }}" data-stellar-background-ratio="0.5">
+	
+
+	<!-- container -->
+
+	<header>
+	  
+	  <div id="container">	
+
+		{{if theme:options:header_nav_width == 'content'}} 
+		<div class="row hcw">
+		  {{ endif }}
+		  <div class="row hcw" id="topnav">
+
+			{{ theme:partial name="top-nav" }}
+		  </div>
+		</div>
+
+		
+		{{if theme:options:header_nav_width == 'content'}}
+	  </div>
+	  {{ endif }}
+	</header>
+	

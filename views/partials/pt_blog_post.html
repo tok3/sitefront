@@ -1,0 +1,38 @@
+
+<article class="custom-small-type">
+  {{if page:uberschrift != ''}}
+  <h2>{{ page:uberschrift }}</h2>
+  {{else}}
+  <h2>{{ page:title}}</h2>
+  {{endif}}
+  <div class="row">
+	<div class="small-12  medium-12 large-12 columns">
+	  <img src="{{page:bpt_pix:image}}" class="floatRight small-6  medium-6 large-6 columns">
+	  <p>{{page:bpt_txt1}}</p>
+
+	</div>
+  </div>
+  {{page:bpt_txt2}}
+
+</article>
+
+
+
+
+<article class="custom-large-medium-type">
+  {{if page:uberschrift != ''}}
+  <h2>{{ page:uberschrift }}</h2>
+  {{else}}
+  <h2>{{ page:title}}</h2>
+  {{endif}}
+  <div class="row">
+	<div class="small-6 medium-6 large-6 columns">
+	  {{page:bpt_txt1}}
+	</div>
+	<div class="small-6  medium-6 large-6 columns">
+	  {{page:bpt_pix:img}}
+	</div>
+  </div>
+  {{page:bpt_txt2}}
+
+</article>

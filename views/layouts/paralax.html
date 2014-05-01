@@ -1,0 +1,50 @@
+{{ theme:partial name="header" }}
+<!-- content -->
+<section id="content">
+  <div class="row">
+
+	<div class="large-12 small-12 columns">
+	  <!-- para start -->
+	  <div id="wrap">
+		{{ streams:cycle stream="paralax" order_by="ordering_count" sort="asc"}}
+
+		<div class="container">
+		  <div class="small-10 small-offset-1 columns">
+			<div class="page-header text-center">
+			  <h1>{{uberschrift_h1}}</h1>
+			</div>
+			
+			<p class="lead text-center">
+			  {{lead}}
+			</p>
+			<p class="text-center">
+			  {{text}}
+			</p>
+		  </div>
+		</div>
+		
+		<div class="divider" id="section{{id}}"></div>
+		
+		<section class="small-12 columns section bg-{{id}}">
+		  <div class="small-8 small-offset-2 columns text-center">
+
+			<h2 class="bildtext">{{bildtext}}</h2>
+		  </div>
+		</section>
+		
+		<div class="divider"></div>
+
+		{{ /streams:cycle }}
+
+		<!-- para end -->
+	  </div>
+
+	</div>
+  </div>
+  </section>
+
+
+  <!-- /content -->
+
+  {{ theme:partial name="footer" }}
+

@@ -1,0 +1,9 @@
+{{if  {navigation:links group="sidebar"}  !== '' OR  {widgets:area slug="sidebar"}  !== ''}}
+<aside class="hide-for-print">
+
+{{widgets:area slug=page.slug}}
+
+ 	{{widgets:area slug="sidebar"}} 
+</aside>
+{{endif}}
+	
