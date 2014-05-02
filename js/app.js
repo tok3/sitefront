@@ -41,7 +41,7 @@ realignFooter();
 	if(viewportWidth > 640)
 	{
 		realignFooter();
-		$('#topnav').center();
+//		$('#topnav').center();
 
 		window.onresize = function() {
 			realignFooter();
@@ -59,25 +59,6 @@ $("div.pagination ul").first().addClass('pagination');
 
 $('.inner').removeClass('hide'); // prevent fouc
 
-// end slider
-
-
-// navi semitransp wenn über content 
-/*$(window).scroll(function(){    
-    var top =  $('#content'); 
-    
-    if ($(this).scrollTop() > 196){
-        $('#topnav').addClass('topnacOpq');
-    }
-    else{
-$('#topnav').removeClass('topnacOpq');
-
-    }
-});
-*/
-
-
-
 // ende
 
 // kontaktform 
@@ -90,7 +71,34 @@ $('#custUpl').click(function(){
 // ende kontaktform
 
 
+(function(){
+	var ua = navigator.userAgent,
+		isMobileWebkit = /WebKit/.test(ua) && /Mobile/.test(ua);
 
+	if (isMobileWebkit) {
+		$('html').addClass('mobile');
+	}
+
+	$(function(){
+		var iScrollInstance;
+
+		if (isMobileWebkit) {
+			iScrollInstance = new iScroll('wrapper');
+
+			$('#scroller').stellar({
+				scrollProperty: 'transform',
+				horizontalScrolling: false,
+				verticalOffset: 150
+			});
+		} else {
+			$.stellar({
+				horizontalScrolling: false,
+				verticalOffset: 150
+			});
+		}
+	});
+
+})();
 
 }); // end doc ready 
 
@@ -102,4 +110,5 @@ jQuery.fn.center = function () {
  //    this.css("z-index", "99");
  //    return this;
 }
+
 
