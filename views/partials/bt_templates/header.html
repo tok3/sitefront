@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+  {{ theme:partial name="metadata" }}
+
+  <!-- Set a base location for assets -->
+  <base href="{{ url:current }}"/>
+  {{ asset:css file="bootstrap.min.css" group="btmin"}}
+  {{asset:render group="btmin" }}
+
+{{ asset:css file="foundation-icons.css" group="sitestyles"}}
+  {{asset:render group="sitestyles" }}
+
+
+    </head>
+    <!-- HTML code from Bootply.com editor -->
+    
+    <body  >

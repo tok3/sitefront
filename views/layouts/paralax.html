@@ -4,13 +4,44 @@
   <div class="row">
 
 	<div class="large-12 small-12 columns">
+	  
+
+	  <!-- mobile -->
+
+	  {{ if { mobiledetect:isMobile } }}
+
+	  {{ streams:cycle stream="{{page:stream_name}}" order_by="ordering_count" sort="asc" where="veroffentlicht = 1"}}
+
+
+	  <div class="row ">
+		<div class="large-9 medium-10 columns small-centered text-center">
+		  <h2 class="text-center">{{uberschrift_h1}}</h2>
+		  <h4 class="text-center">{{lead}}</h4>
+		  {{text}}
+		</div>
+	  </div>
+
+	  <section class="mobileMarquee-{{bg_image:id}}">
+{{if bildtext !=''}}
+		<h4 class="bildtext">{{bildtext}}</h4>
+{{endif}}
+	  </section>
+	  <div class="divider"><hr></div>
+
+	  {{ /streams:cycle }}
+
+	  <!-- /mobile -->
+	  {{else}}
+
 	  <!-- para start -->
-	  <div id="wrap">
-		{{ streams:cycle stream="paralax" order_by="ordering_count" sort="asc"}}
+	  <div id="wrap hide" >
+		{{ streams:cycle stream="{{page:stream_name}}" order_by="ordering_count" sort="asc" where="veroffentlicht = 1"}}
 
 		<div class="container">
 		  <div class="small-10 small-offset-1 columns">
 			<div class="page-header text-center">
+
+
 			  <h1>{{uberschrift_h1}}</h1>
 			</div>
 			
@@ -25,14 +56,15 @@
 		
 		<div class="divider" id="section{{id}}"></div>
 		
-		<section class="small-12 columns section bg-{{id}}">
-		  <div class="small-8 small-offset-2 columns text-center">
-
+		<section class="small-12 columns section bg-{{bg_image:id}}">
+		  <div class="small-12 medium-8 medium-offset-2 columns text-center">
+{{if bildtext !=''}}
 			<h2 class="bildtext">{{bildtext}}</h2>
+{{endif}}
 		  </div>
 		</section>
 		
-		<div class="divider"></div>
+	  <div class="divider"><hr></div>
 
 		{{ /streams:cycle }}
 
@@ -41,10 +73,11 @@
 
 	</div>
   </div>
-  </section>
+  {{endif}}
+</section>
 
 
-  <!-- /content -->
+<!-- /content -->
 
-  {{ theme:partial name="footer" }}
+{{ theme:partial name="footer" }}
 
